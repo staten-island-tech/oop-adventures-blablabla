@@ -15,14 +15,25 @@ class npc:
             print(self.__dialouge)
 
     
-    def 
+    def status(self):
+        print("**Npc's Stats**")
+        print(self.__name)
+        print(self.__dialouge)
+        print(self.__atk)
+        print(self.__hp)
+    
+Npcbattle=[
+    {"name":"Warlord","atk": 100, "hp": 100},
+    {"name":"Pirate King", "atk": 99, "hp":200},
+    {"name":"Zeus", "atk":77, "hp":88},
+    {"name": "Moon God", "atk": 129, "hp":72}    
+]
+
+print(Npcbattle[1]["hp"])
+
             
 
     
 
 
         
-
-        
-
-
