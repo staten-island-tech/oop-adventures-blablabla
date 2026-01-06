@@ -1,10 +1,28 @@
-class boss:
-    def __init_(self, name, attackdamage, specialbossdrop, health):
-        self.name=name
-        self.__attackdamgage=attackdamage
-        self.__specialbossdrop=specialbossdrop
-        self.__health=health
+class npc:
+    
+    def __init_(self, name, dialouge, atk, hp):
+        self.__name=name
+        self.__dialouge=dialouge
+        self.__atk=atk
+        self.__hp=hp
+    
+    def interaction(self):
+        print(self.__dialouge)
+        choice=input("would you like to end the conversation? Yes or No")
+        if choice == "No":
+            print("the Npc has wandered away")
+        elif choice == "Yes":
+            print(self.__dialouge)
 
-    def is_defeated(self):
-        return self.__health < 0
-        #now we want to append whatever the bosses drop into the hero's inventory
+    
+    def 
+            
+
+    
+
+
+        
+
+        
+
+
