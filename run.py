@@ -21,6 +21,7 @@ class npc:
         print(f"Dialouge:{self.__dialouge}")
         print(f"Atk:{self.__atk}")
         print(f"Hp:{self.__hp}")
+        print(f"expgain:{self.__expgain}")
 
     def dead(self):
         return self.__hp <= 0
@@ -43,7 +44,7 @@ userchoice=int(input("choose a number from 0 to 3 to fight a random npc:"))
 print("you will be fighting", Npcbattle[userchoice]["name"])
 
 
-Npcfight=npc(Npcbattle[userchoice]["name"],"Let the fight begin", Npcbattle[userchoice]["atk"], Npcbattle[userchoice]["hp"])
+Npcfight=npc(Npcbattle[userchoice]["name"],"Let the fight begin", Npcbattle[userchoice]["atk"], Npcbattle[userchoice]["hp"], Npcbattle[userchoice]["expgain"])
 
 while True:
     Npcfight.interaction()
