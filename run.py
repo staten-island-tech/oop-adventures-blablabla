@@ -46,10 +46,7 @@ print("you will be fighting", Npcbattle[userchoice]["name"])
 
 Npcfight=npc(Npcbattle[userchoice]["name"],"Let the fight begin", Npcbattle[userchoice]["atk"], Npcbattle[userchoice]["hp"], Npcbattle[userchoice]["expgain"])
 
-while True:
-    Npcfight.interaction()
-    Npcfight.status()
-    break
+
 
     
 
