@@ -1,5 +1,5 @@
 import random as ran
-
+import run as npci
 
 
 class PlyrTurn:
@@ -28,23 +28,23 @@ class NpcTurn:
         print(f"the NPC attacked you and dealt {atk * rand} damage!")
 
 isBattle = False
-playersTurn = True
 playerStunnedTurns = 0
 
+def startBattle():
+    rand = ran.randint(1,4)
+    selNPC = npci.npc(npci.Npcbattle[rand]["name"],"Let the fight begin!", npci.Npcbattle[rand]["atk"], npci.Npcbattle[rand]["hp"])
+    print(f"You will be fighting {npci.npc.__name}!")
+    print(f"Atk: {npci.npc.__atk} | HP: {npci.npc.__hp}")
 while isBattle == True:
     if curhp < 1:
         print("You died! :(")
         isBattle = False
     if playerStunnedTurns > 0:
-        playersTurn == False
         print("Your turn was skipped because you were stunned!")
         playerStunnedTurns -= 1
-    if playersTurn == True:
-        if playerStunnedTurns > 0:
-            playersTurn == False
-            playerStunnedTurns -= 1
+    else:
         if abil == "care":
-            curhp += 5 + level
+            curhp += 5
 
         
         print("<ATTACK> | <ABILITY>")
@@ -57,7 +57,7 @@ while isBattle == True:
                 print(f"Your strike was weak! You dealt {atk * rand} damage.")
             else:
                 print(f"On spot! You dealt {atk * rand} damage.")
-        if option.lower() == "ability":
+        elif option.lower() == "ability":
             doAbil = PlyrTurn.ability(abil)
             if abil == "sword":
                 print(f"Using your sharp sword, you managed to deal {(atk*rand)*1.10} damage!")
@@ -65,7 +65,7 @@ while isBattle == True:
             if abil == "slateskin":
                 print("You drank a Slateskin Potion, granting resistance to the next attack against you!")
                 print("You are immobilized for the entirety of next turn as the effects wear off, though..")
-    else: ## NPC TURN
+ ## NPC TURN
         if npc_curhp < 1:
             print("You killed the NPC!")
             isBattle = False
