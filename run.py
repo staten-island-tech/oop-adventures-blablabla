@@ -1,3 +1,7 @@
+## This is the file containing pretty much all npc-related code.
+## DO NOT RUN THIS FILE DIRECTLY. run battle.py to start the game.
+
+
 class npc:
     
     def __init__(self, name, dialouge, atk, hp):
@@ -23,20 +27,25 @@ class npc:
 
 
 npcs =[
-    {"name":"Warlord","atk": 100, "hp": 100, "expgain": 45},
-    {"name":"Pirate King", "atk": 99, "hp":200, "expgain":55},
-    {"name":"Zeus", "atk":77, "hp":88, "expgain":66},
-    {"name": "Moon God", "atk": 129, "hp":72, "expgain":77}
+    {"name":"Fiend","atk": 7, "hp": 40},
+    {"name":"Pirate", "atk": 9, "hp":60},
+    {"name":"Ghoul", "atk":14, "hp":70},
+    {"name": "Beast", "atk": 12, "hp":120}
 ]
+
 
 def npcBattle():
     npcChosen = False
     while npcChosen == False:
         print("Choose a number from 1 to 4 to fight an NPC.")
         npcsel = input(">>> ") 
-        if npcsel < 1:
+        if not npcsel.isdigit():
             print("You didnt choose a valid number!")
-        elif npcsel > 4:
+        elif int(npcsel) < 1 or int(npcsel) > 4:
+            print("You didnt choose a valid number!")
+        else:
+            npcChosen = True
+            return npc(npcs[int(npcsel)-1]["name"], "An enemy approaches!", npcs[int(npcsel)-1]["atk"], npcs[int(npcsel)-1]["hp"])
               
 
 

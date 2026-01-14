@@ -1,13 +1,19 @@
-def dec(stat, amt: int):
-    if stat == atk:
-        atk -= amt
-    elif stat == hp:
-         hp -= amt
-def inc(stat, amt: int):
-    if stat == atk:
-        atk += amt
-    elif stat == hp:
-         hp += amt
+class player:
+    def __init__(self, name: str, atk: int, maxhp: int):
+        self.name = name
+        self.atk = atk
+        self.maxhp = maxhp
+        self.curhp = maxhp
+    def dec(stat, amt: int):
+        if stat == atk:
+            atk -= amt
+        elif stat == hp:
+            hp -= amt
+    def inc(stat, amt: int):
+        if stat == atk:
+            atk += amt
+        elif stat == hp:
+            hp += amt
 
 chars = [
     {
@@ -29,12 +35,12 @@ chars = [
         "atk": 5,
         "hp": 65,
         "abil": "Care",
-        "abildesc": "Carepad naturally restores 5 HP every turn, increasing as he levels up."
+        "abildesc": "Carepad naturally restores 5 HP every turn."
     }
 ]
 
 
-player = None
+playerChar = None
 for char in chars:
     print("===========================")
     print(char["name"])
@@ -42,18 +48,22 @@ for char in chars:
     print(f"{char["hp"]} MAX HP")
     print(f"{char["abil"]} Ability:")
     print(char["abildesc"])
-while player == None:
+while playerChar == None:
     print("Please type in the name of the character you wish to play as.")
     selection = input(">>>")
     for char in chars:
         if char["name"] == selection.lower():
-            player = char["name"]
+            playerChar = player(char["name"], char["atk"], char["hp"])
             atk = char["atk"]
             maxhp = char["hp"]
             curhp = maxhp
             print(f"You chose: {char["name"]}")
+            Found = True
             break
-    if player == None:
+        else:
+            print("X")
+            Found = False
+    if Found == False:
         print("You did not select a valid character. Please retry!")
         continue
 
