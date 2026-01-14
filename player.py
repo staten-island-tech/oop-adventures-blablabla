@@ -1,19 +1,15 @@
+## This is the file containing pretty much all player-related code.
+## DO NOT RUN THIS FILE DIRECTLY. run battle.py to start the game.
+
+
+
 class player:
-    def __init__(self, name: str, atk: int, maxhp: int):
+    def __init__(self, name: str, atk: int, maxhp: int, curhp: int, abil):
         self.name = name
         self.atk = atk
         self.maxhp = maxhp
-        self.curhp = maxhp
-    def dec(stat, amt: int):
-        if stat == atk:
-            atk -= amt
-        elif stat == hp:
-            hp -= amt
-    def inc(stat, amt: int):
-        if stat == atk:
-            atk += amt
-        elif stat == hp:
-            hp += amt
+        self.curhp = curhp
+        self.abil = abil
 
 chars = [
     {
@@ -39,33 +35,32 @@ chars = [
     }
 ]
 
-
+## reminder: use playerChar.__<var> to access stats
 playerChar = None
-for char in chars:
-    print("===========================")
-    print(char["name"])
-    print(f"{char["atk"]} ATK")
-    print(f"{char["hp"]} MAX HP")
-    print(f"{char["abil"]} Ability:")
-    print(char["abildesc"])
-while playerChar == None:
-    print("Please type in the name of the character you wish to play as.")
-    selection = input(">>>")
+def chooseChar():
+    global playerChar
     for char in chars:
-        if char["name"] == selection.lower():
-            playerChar = player(char["name"], char["atk"], char["hp"])
-            atk = char["atk"]
-            maxhp = char["hp"]
-            curhp = maxhp
-            print(f"You chose: {char["name"]}")
-            Found = True
-            break
-        else:
-            print("X")
-            Found = False
-    if Found == False:
-        print("You did not select a valid character. Please retry!")
-        continue
+        print("===========================")
+        print(char["name"])
+        print(f"{char["atk"]} ATK")
+        print(f"{char["hp"]} MAX HP")
+        print(f"{char["abil"]} Ability:")
+        print(char["abildesc"])
+    while playerChar == None:
+        print("Please type in the name of the character you wish to play as.")
+        selection = input(">>>")
+        for char in chars:
+            if char["name"] == selection.lower():
+                playerChar = player(char["name"], char["atk"], char["hp"], char["hp"], char["abil"])
+                print(f"You chose: {char["name"]}")
+                Found = True
+                break
+            else:
+                print("X")
+                Found = False
+        if Found == False:
+            print("You did not select a valid character. Please retry!")
+            continue
 
         
         

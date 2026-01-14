@@ -5,11 +5,11 @@
 class npc:
     
     def __init__(self, name, dialouge, atk, hp):
-        self.__name=name
-        self.__dialouge=dialouge
-        self.__atk=atk
-        self.__hp=hp
-    
+        self.name=name
+        self.dialouge=dialouge
+        self.atk=atk
+        self.hp=hp
+
     def interaction(self):
         choice=input("would you like to hear the npc's backstory? Yes or No:")
         if choice.lower() == "no":
@@ -20,10 +20,10 @@ class npc:
 
     def status(self):
         print("**Npc's Stats**")
-        print(f"Name:{self.__name}")
-        print(f"Dialouge:{self.__dialouge}")
-        print(f"Atk:{self.__atk}")
-        print(f"Hp:{self.__hp}")
+        print(f"Name:{self.name}")
+        print(f"Dialouge:{self.dialouge}")
+        print(f"Atk:{self.atk}")
+        print(f"Hp:{self.hp}")
 
 
 npcs =[
