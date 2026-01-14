@@ -23,9 +23,7 @@ class npc:
         print(f"Hp:{self.__hp}")
         print(f"expgain:{self.__expgain}")
 
-    def dead(self):
-        return self.__hp <= 0
-            #Here we would want to append exp into the players inventory and maybe append a boss drop of some sort
+
 
 
 
@@ -34,10 +32,10 @@ class npc:
 
     
 Npcbattle=[
-    {"name":"Warlord","atk": 100, "hp": 100, "expgain": 45},
-    {"name":"Pirate King", "atk": 99, "hp":200, "expgain":55},
+    {"name":"Warlord","atk": 100, "hp": 100},
+    {"name":"Pirate King", "atk": 99, "hp":200},
     {"name":"Zeus", "atk":77, "hp":88, "expgain":66},
-    {"name": "Moon God", "atk": 129, "hp":72, "expgain":77}
+    {"name": "Moon God", "atk": 129, "hp":72}
 ]
 
 userchoice=int(input("choose a number from 0 to 3 to fight a random npc:"))
@@ -45,11 +43,11 @@ print("you will be fighting", Npcbattle[userchoice]["name"])
 
 
 Npcfight=npc(Npcbattle[userchoice]["name"],"Let the fight begin", Npcbattle[userchoice]["atk"], Npcbattle[userchoice]["hp"], Npcbattle[userchoice]["expgain"])
+npc_atk = Npcbattle[userchoice]["atk"]
+npc_maxhp = Npcbattle[userchoice]["hp"]
+npc_curhp = Npcbattle[userchoice]["hp"]
 
-while True:
-    Npcfight.interaction()
-    Npcfight.status()
-    break
+
 
     
 
