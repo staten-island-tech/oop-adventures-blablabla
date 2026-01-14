@@ -22,16 +22,22 @@ class npc:
         print(f"Hp:{self.__hp}")
 
 
-    
-Npcbattle=[
+npcs =[
     {"name":"Warlord","atk": 100, "hp": 100, "expgain": 45},
     {"name":"Pirate King", "atk": 99, "hp":200, "expgain":55},
     {"name":"Zeus", "atk":77, "hp":88, "expgain":66},
     {"name": "Moon God", "atk": 129, "hp":72, "expgain":77}
 ]
 
-
-    
+def npcBattle():
+    npcChosen = False
+    while npcChosen == False:
+        print("Choose a number from 1 to 4 to fight an NPC.")
+        npcsel = input(">>> ") 
+        if npcsel < 1:
+            print("You didnt choose a valid number!")
+        elif npcsel > 4:
+              
 
 
 
