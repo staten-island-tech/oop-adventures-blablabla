@@ -1,5 +1,6 @@
 import random as ran
-import run as npci
+import run as npc
+
 
 
 class PlyrTurn:
@@ -20,34 +21,36 @@ class PlyrTurn:
             rand = ran.random(0.6, 1.5)
             npc_curhp -= (atk * rand)* 1.10
             return rand 
+
+
 class NpcTurn:
     def attack(atk):
         global curhp
         rand = ran.random(0.9, 1.3)
         curhp -= atk * rand
         print(f"the NPC attacked you and dealt {atk * rand} damage!")
+    def abil(abil):
+        global playerEffects
+        if abil == "poison_pwder":
+            playerEffects.append({
+                "name": "poison",
+                "turns": 2
+            })
+            print("the NPC threw a poisonous powder at you! You are now poisoned.")
 
 isBattle = False
+playersTurn = True
+playerDamageResist = 0
+playerDamageInflict = 0
 playerStunnedTurns = 0
-
-def startBattle():
-    rand = ran.randint(1,4)
-    selNPC = npci.npc(npci.Npcbattle[rand]["name"],"Let the fight begin!", npci.Npcbattle[rand]["atk"], npci.Npcbattle[rand]["hp"])
-    print(f"You will be fighting {npci.npc.__name}!")
-    print(f"Atk: {npci.npc.__atk} | HP: {npci.npc.__hp}")
 while isBattle == True:
-    if curhp < 1:
-        print("You died! :(")
-        isBattle = False
-    if playerStunnedTurns > 0:
-        print("Your turn was skipped because you were stunned!")
-        playerStunnedTurns -= 1
-    else:
+    if playersTurn == True:
+        if playerStunnedTurns > 0:
+            playersTurn == False
+            continue
         if abil == "care":
             curhp += 5
-
-        
-        print("<ATTACK> | <ABILITY>")
+        print("<ATTACK> | <ABILITY> | <STATUS>")
         option = input("What action would you like to do? >> ")
         if option.lower() == "attack":
             rand = PlyrTurn.attack(atk)
@@ -65,15 +68,19 @@ while isBattle == True:
             if abil == "slateskin":
                 print("You drank a Slateskin Potion, granting resistance to the next attack against you!")
                 print("You are immobilized for the entirety of next turn as the effects wear off, though..")
- ## NPC TURN
-        if npc_curhp < 1:
-            print("You killed the NPC!")
-            isBattle = False
-            break
-        rand = ran.randint(1,3)
-        if rand != 3:
-            NpcTurn.attack(npc_atk)
+                
+    else: ## NPC TURN
+        if curhp < hp / 2:
+            NpcTurn.attack(npc.npc_atk)
+        elif npc.npc_curhp > npc.npc_maxhp / 2:
+            rand = ran.randint(1,3)
+            if rand != 3:
+                NpcTurn.attack(npc.npc_atk)
+            else:
+                NpcTurn.attack("poison_pwder")
+
             
+
 
         
 
