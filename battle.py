@@ -29,19 +29,9 @@ class NpcTurn:
         rand = ran.random(0.9, 1.3)
         curhp -= atk * rand
         print(f"the NPC attacked you and dealt {atk * rand} damage!")
-    def abil(abil):
-        global playerEffects
-        if abil == "poison_pwder":
-            playerEffects.append({
-                "name": "poison",
-                "turns": 2
-            })
-            print("the NPC threw a poisonous powder at you! You are now poisoned.")
 
 isBattle = False
 playersTurn = True
-playerDamageResist = 0
-playerDamageInflict = 0
 playerStunnedTurns = 0
 while isBattle == True:
     if playersTurn == True:
@@ -68,7 +58,7 @@ while isBattle == True:
             if abil == "slateskin":
                 print("You drank a Slateskin Potion, granting resistance to the next attack against you!")
                 print("You are immobilized for the entirety of next turn as the effects wear off, though..")
-                
+
     else: ## NPC TURN
         if curhp < hp / 2:
             NpcTurn.attack(npc.npc_atk)
@@ -76,8 +66,6 @@ while isBattle == True:
             rand = ran.randint(1,3)
             if rand != 3:
                 NpcTurn.attack(npc.npc_atk)
-            else:
-                NpcTurn.attack("poison_pwder")
 
             
 
