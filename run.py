@@ -1,11 +1,10 @@
 class npc:
     
-    def __init__(self, name, dialouge, atk, hp,expgain):
+    def __init__(self, name, dialouge, atk, hp):
         self.__name=name
         self.__dialouge=dialouge
         self.__atk=atk
         self.__hp=hp
-        self.__expgain=expgain
     
     def interaction(self):
         choice=input("would you like to hear the npc's backstory? Yes or No:")
@@ -21,15 +20,6 @@ class npc:
         print(f"Dialouge:{self.__dialouge}")
         print(f"Atk:{self.__atk}")
         print(f"Hp:{self.__hp}")
-        print(f"expgain:{self.__expgain}")
-
-    def dead(self):
-        return self.__hp <= 0
-            #Here we would want to append exp into the players inventory and maybe append a boss drop of some sort
-
-
-
-
 
 
     
@@ -39,13 +29,6 @@ Npcbattle=[
     {"name":"Zeus", "atk":77, "hp":88, "expgain":66},
     {"name": "Moon God", "atk": 129, "hp":72, "expgain":77}
 ]
-
-userchoice=int(input("choose a number from 0 to 3 to fight a random npc:"))
-print("you will be fighting", Npcbattle[userchoice]["name"])
-
-
-Npcfight=npc(Npcbattle[userchoice]["name"],"Let the fight begin", Npcbattle[userchoice]["atk"], Npcbattle[userchoice]["hp"], Npcbattle[userchoice]["expgain"])
-
 
 
     
