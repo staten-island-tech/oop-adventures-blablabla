@@ -22,14 +22,13 @@ class PlyrTurn:
             dmg = (plyr.playerChar.atk * rand)* 1.10
             battledNpc.hp -= m.ceil(dmg)
             return dmg 
-
-
 class NpcTurn:
     def attack(atk):
         rand = ran.uniform(0.5, 1.3)
         dmg = (battledNpc.atk * rand)
         plyr.playerChar.curhp -= m.floor(dmg)
         print(f"{battledNpc.name} attacked you and dealt {int(dmg)} damage!")
+
 isBattle = False
 while isBattle == False:
     plyr.chooseChar()
@@ -77,14 +76,12 @@ while isBattle == True:
                 print(f"Using your sharp sword, you managed to deal {int(dmg)} damage!")
                 print("You spend the entirety of your next turn stashing your sword away though..")
                 playersTurn = False
-                continue
             elif plyr.playerChar.abil == "Slateskin":
                 print(" ")
                 print("You drank a Slateskin Potion, granting resistance to the next attack against you!")
                 print("You are immobilized for the entirety of next turn as the effects wear off, though..")
                 print("")
                 playersTurn = False
-                continue
             else:
                 print("You dont have any usable non-passive abilities!")
         elif option.lower() == "status": ## does not end players turn
