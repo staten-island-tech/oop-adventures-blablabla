@@ -1,3 +1,6 @@
+## run this .py file to start the game
+## DO NOT RUN ANY OTHER FILE!! tyy
+
 import random as ran
 import run as npc
 import player as plyr
