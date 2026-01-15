@@ -10,6 +10,12 @@ class player:
         self.maxhp = maxhp
         self.curhp = curhp
         self.abil = abil
+    def status(self):
+            print("**Player's Stats**")
+            print(f"Name:{self.name}")
+            print(f"Atk:{self.atk}")
+            print(f"Hp:{self.curhp}/{self.maxhp}")
+            print(f"Ability:{self.abil}")
 
 chars = [
     {
